@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Erik Costa</title>
+<meta name="description" content="Erik Costa, desenvolvedor Python back-end com mais de 5 anos de experiência em sistemas web.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: coluna única de leitura, hero tipográfico, casos como fichas de registro de estoque, linha do tempo real de carreira */
+:root{
+  --bg:#f3f4f7; --surface:#ffffff; --ink:#151a2b; --muted:#5a6178; --line:#dde0e8;
+  --accent:#e2601a; --accent-soft:#fde9dc; --chip:#eceef4;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1220; --surface:#171b2c; --ink:#e9ebf3; --muted:#9aa1b8; --line:#272c42;
+  --accent:#ff8a3d; --accent-soft:#3a2416; --chip:#20253a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1220; --surface:#171b2c; --ink:#e9ebf3; --muted:#9aa1b8; --line:#272c42;
+  --accent:#ff8a3d; --accent-soft:#3a2416; --chip:#20253a; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;margin:0}
+.wrap{max-width:880px;margin:0 auto;padding-inline:20px;padding-block:56px 72px;display:flex;flex-direction:column;gap:72px}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.1}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* Hero */
+.hero{display:flex;flex-direction:column;gap:22px}
+.status{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;font-family:var(--mono);font-size:13px;color:var(--ink);background:var(--surface);border:1px solid var(--line);padding:6px 12px;border-radius:999px}
+.dot{width:8px;height:8px;border-radius:50%;background:#2fb36d;box-shadow:0 0 0 4px color-mix(in srgb,#2fb36d 22%,transparent)}
+.hero h1{font-size:clamp(44px,9vw,88px);font-weight:800;letter-spacing:-.03em}
+.hero h1 span{color:var(--accent)}
+.role{font-family:var(--display);font-weight:500;font-size:clamp(20px,3.2vw,28px);color:var(--muted);letter-spacing:-.01em}
+.lede{max-width:62ch;font-size:18px;margin:0}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:500 15px var(--body);padding:11px 18px;border-radius:10px;text-decoration:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn:hover{border-color:var(--accent)}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:8px}
+.fact{background:var(--surface);padding:18px 20px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.fact b{font-family:var(--display);font-size:30px;font-weight:700;font-variant-numeric:tabular-nums}
+.fact span{color:var(--muted);font-size:14px}
+
+/* Seções */
+section{display:flex;flex-direction:column;gap:24px}
+.sec-head{display:flex;flex-direction:column;gap:6px}
+.sec-head h2{font-size:clamp(28px,4.5vw,38px);font-weight:700;letter-spacing:-.02em}
+.sec-head p{margin:0;color:var(--muted);max-width:62ch}
+
+/* Fichas de caso */
+.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.case{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.case-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px dashed var(--line);padding-bottom:12px}
+.code{font-family:var(--mono);font-size:12px;color:var(--accent);background:var(--accent-soft);padding:3px 8px;border-radius:6px;white-space:nowrap}
+.case h3{font-size:21px;font-weight:700;letter-spacing:-.01em}
+.case dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:15px}
+.case dt{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding-top:3px}
+.case dd{margin:0;min-width:0}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.tag{font-family:var(--mono);font-size:12px;background:var(--chip);color:var(--ink);padding:3px 8px;border-radius:6px}
+
+/* Projeto pessoal */
+.side{background:var(--ink);color:var(--bg);border-radius:16px;padding:28px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center}
+.side h3{font-size:26px;font-weight:700}
+.side p{margin:6px 0 0;opacity:.8;max-width:56ch}
+.side .label{color:inherit;opacity:.7}
+.side .code{background:color-mix(in srgb,var(--accent) 22%,transparent);color:var(--accent)}
+
+/* Linha do tempo */
+.timeline{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-left:2px solid var(--line);margin-left:6px}
+.timeline li{position:relative;padding:0 0 28px 26px;display:flex;flex-direction:column;gap:4px}
+.timeline li:last-child{padding-bottom:0}
+.timeline li::before{content:"";position:absolute;left:-8px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--accent)}
+.timeline li.past::before{border-color:var(--muted)}
+.when{font-family:var(--mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.timeline h3{font-size:20px;font-weight:700}
+.timeline p{margin:0;color:var(--muted);max-width:62ch}
+
+/* Stack */
+.stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.group{display:flex;flex-direction:column;gap:10px}
+.group .tags{margin-top:0}
+.group .tag{font-size:13px;padding:5px 10px;background:var(--surface);border:1px solid var(--line)}
+
+/* Contato */
+.contact{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:18px}
+.contact h2{font-size:clamp(26px,4vw,34px)}
+.rows{display:flex;flex-direction:column;gap:10px}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+.row .label{width:70px}
+.row .val{font-family:var(--mono);font-size:15px;user-select:all;min-width:0;overflow-wrap:anywhere}
+.copy{font:500 13px var(--body);padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.copy:hover{border-color:var(--accent)}
+footer{color:var(--muted);font-size:14px;text-align:center}
+
+@media (max-width:640px){
+  .wrap{padding-block:36px 56px;gap:56px}
+  .facts{grid-template-columns:1fr}
+  .cases{grid-template-columns:1fr}
+  .side{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:no-preference){
+  .hero>*{animation:rise .6s ease both}
+  .hero>*:nth-child(2){animation-delay:.05s}.hero>*:nth-child(3){animation-delay:.1s}
+  .hero>*:nth-child(4){animation-delay:.15s}.hero>*:nth-child(5){animation-delay:.2s}
+  @keyframes rise{from{transform:translateY(8px)}to{transform:none}}
+}
+</style>
+</head>
+<body>
+
+<main class="wrap">
+
+  <header class="hero">
+    <span class="status"><span class="dot"></span>Disponível para novas oportunidades</span>
+    <h1>Erik Costa<span>.</span></h1>
+    <p class="role">Desenvolvedor Python · Back-end</p>
+    <p class="lede">Mais de 5 anos construindo sistemas web. Nos últimos quase 4, desenvolvi sozinho módulos inteiros de um sistema de gestão de estoque usado por redes de varejo, do planejamento à produção, cuidando também de integrações, segurança, nuvem e suporte em produção.</p>
+    <div class="actions">
+      <a class="btn primary" href="#contato">Entrar em contato</a>
+      <a class="btn" href="https://github.com/declivee" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+    <div class="facts">
+      <div class="fact"><b>5+ anos</b><span>com Python em sistemas web</span></div>
+      <div class="fact"><b>9 redes</b><span>de varejo usando o sistema</span></div>
+      <div class="fact"><b>3 ERPs</b><span>integrados: TOTVS, Consinco, SAP</span></div>
+    </div>
+  </header>
+
+  <section id="trabalho">
+    <div class="sec-head">
+      <span class="label">Trabalho em destaque</span>
+      <h2>O que eu construí na Forbix</h2>
+      <p>O sistema é privado, então o código não pode ser mostrado. Abaixo está o que cada entrega resolveu e como foi feita.</p>
+    </div>
+    <div class="cases">
+      <article class="case">
+        <div class="case-top"><h3>Módulos de operação</h3><span class="code">Checklist · Validade · Aprovações</span></div>
+        <dl>
+          <dt>Desafio</dt><dd>Lojas precisavam controlar rotinas, prazos de validade e fluxos de aprovação dentro do sistema.</dd>
+          <dt>O que fiz</dt><dd>Criei os três módulos sozinho, do planejamento à produção, com testes automatizados em cada entrega.</dd>
+        </dl>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Django</span><span class="tag">PostgreSQL</span></div>
+      </article>
+
+      <article class="case">
+        <div class="case-top"><h3>Segurança de acesso</h3><span class="code">2FA</span></div>
+        <dl>
+          <dt>Desafio</dt><dd>Proteger o acesso de várias redes de varejo e corrigir uma falha que permitia entrar sem a verificação em duas etapas.</dd>
+          <dt>O que fiz</dt><dd>Desenvolvi o módulo de segurança com regras de senha, bloqueio e login em duas etapas, e fechei a brecha do 2FA.</dd>
+        </dl>
+        <div class="tags"><span class="tag">Autenticação</span><span class="tag">Django</span><span class="tag">Testes</span></div>
+      </article>
+
+      <article class="case">
+        <div class="case-top"><h3>Dados por cliente</h3><span class="code">Multi-cliente</span></div>
+        <dl>
+          <dt>Desafio</dt><dd>Garantir que cada uma das 9 redes visse apenas os próprios dados, no mesmo sistema.</dd>
+          <dt>O que fiz</dt><dd>Implementei a separação segura dos dados de cada cliente e evoluí a rotina que alimenta a base de relatórios.</dd>
+        </dl>
+        <div class="tags"><span class="tag">PostgreSQL</span><span class="tag">SQL</span><span class="tag">Segurança</span></div>
+      </article>
+
+      <article class="case">
+        <div class="case-top"><h3>Nuvem e automação</h3><span class="code">AWS</span></div>
+        <dl>
+          <dt>Desafio</dt><dd>Enviar e-mails, notificações e relatórios sem travar o sistema principal.</dd>
+          <dt>O que fiz</dt><dd>Montei processamento em segundo plano na AWS e uma automação que gera painéis e envia relatórios por e-mail aos clientes.</dd>
+        </dl>
+        <div class="tags"><span class="tag">AWS</span><span class="tag">Docker</span><span class="tag">Filas</span></div>
+      </article>
+
+      <article class="case">
+        <div class="case-top"><h3>Integração com ERPs</h3><span class="code">TOTVS · Consinco · SAP</span></div>
+        <dl>
+          <dt>Desafio</dt><dd>Trazer produtos e estoque dos ERPs de cada rede para dentro do sistema.</dd>
+          <dt>O que fiz</dt><dd>Desenvolvi as integrações de importação com TOTVS, Consinco e SAP.</dd>
+        </dl>
+        <div class="tags"><span class="tag">APIs REST</span><span class="tag">Python</span><span class="tag">ETL</span></div>
+      </article>
+
+      <article class="case">
+        <div class="case-top"><h3>BI dentro do sistema</h3><span class="code">Metabase</span></div>
+        <dl>
+          <dt>Desafio</dt><dd>Clientes queriam ver indicadores sem sair da plataforma.</dd>
+          <dt>O que fiz</dt><dd>Integrei painéis do Metabase ao sistema, com vários painéis por cliente.</dd>
+        </dl>
+        <div class="tags"><span class="tag">Metabase</span><span class="tag">SQL</span><span class="tag">Relatórios</span></div>
+      </article>
+    </div>
+  </section>
+
+  <aside class="side">
+    <div>
+      <span class="label">Projeto pessoal · em andamento</span>
+      <h3>Pokémon MMORPG para navegador</h3>
+      <p>Um jogo online multijogador que roda direto no navegador, desenvolvido no meu tempo livre.</p>
+    </div>
+    <span class="code">em desenvolvimento</span>
+  </aside>
+
+  <section id="experiencia">
+    <div class="sec-head">
+      <span class="label">Experiência</span>
+      <h2>Carreira</h2>
+    </div>
+    <ol class="timeline">
+      <li>
+        <span class="when">dez/2022 – set/2026</span>
+        <h3>Desenvolvedor Pleno · Forbix</h3>
+        <p>Sistema de gestão de estoque para redes de varejo. Módulos, segurança, integrações com ERPs, AWS, BI, funcionalidades com IA e investigação de problemas em produção.</p>
+      </li>
+      <li class="past">
+        <span class="when">mar/2021 – dez/2022</span>
+        <h3>Programador Júnior · Grupo CRM</h3>
+        <p>Sistema em Python para análise de rotas de pedidos da plataforma VTEX.</p>
+      </li>
+      <li class="past">
+        <span class="when">2018</span>
+        <h3>Análise e Desenvolvimento de Sistemas · FAEX</h3>
+        <p>Formação superior em tecnologia.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section id="stack">
+    <div class="sec-head">
+      <span class="label">Competências</span>
+      <h2>Stack</h2>
+    </div>
+    <div class="stack">
+      <div class="group"><span class="label">Desenvolvimento</span><div class="tags"><span class="tag">Python</span><span class="tag">Django</span><span class="tag">APIs REST</span><span class="tag">JavaScript</span><span class="tag">HTML/CSS</span></div></div>
+      <div class="group"><span class="label">Banco de dados</span><div class="tags"><span class="tag">PostgreSQL</span><span class="tag">SQL</span><span class="tag">MongoDB</span></div></div>
+      <div class="group"><span class="label">Nuvem e ferramentas</span><div class="tags"><span class="tag">AWS</span><span class="tag">Docker</span><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Jira</span></div></div>
+      <div class="group"><span class="label">Integrações e dados</span><div class="tags"><span class="tag">TOTVS</span><span class="tag">Consinco</span><span class="tag">SAP</span><span class="tag">Metabase</span></div></div>
+      <div class="group"><span class="label">Outros</span><div class="tags"><span class="tag">Segurança de acesso</span><span class="tag">Testes automatizados</span><span class="tag">IA no desenvolvimento</span></div></div>
+      <div class="group"><span class="label">Idiomas</span><div class="tags"><span class="tag">Português nativo</span><span class="tag">Inglês B1</span></div></div>
+    </div>
+  </section>
+
+  <section class="contact" id="contato">
+    <div class="sec-head">
+      <span class="label">Contato</span>
+      <h2>Vamos conversar?</h2>
+      <p>Moro em Barueri, SP, e estou aberto a vagas presenciais, híbridas ou remotas.</p>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="label">E-mail</span><span class="val" id="email">erikcostapxg@gmail.com</span><button class="copy" type="button" data-copy="email">Copiar</button></div>
+      <div class="row"><span class="label">GitHub</span><a class="val" href="https://github.com/declivee" target="_blank" rel="noopener">github.com/declivee</a></div>
+    </div>
+  </section>
+
+  <footer>Erik Costa · Barueri, SP</footer>
+</main>
+
+<script>
+document.querySelectorAll('.copy').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var el=document.getElementById(btn.dataset.copy), text=el.textContent.trim();
+    function done(){btn.textContent='Copiado';setTimeout(function(){btn.textContent='Copiar'},1600)}
+    function fallback(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Selecionado'}
+    try{navigator.clipboard.writeText(text).then(done,fallback)}catch(e){fallback()}
+  });
+});
+</script>
+</body>
+</html>
